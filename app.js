@@ -4,8 +4,6 @@ App({
     userInfo: null,
     token: '',
     baseUrl: 'http://localhost:3000/api', // 开发环境，上线后改成正式域名
-    adUnitId: 'adunit-xxxxxxxxxxxx', // 激励视频广告位ID，上线前替换
-    bannerAdUnitId: 'adunit-xxxxxxxxxxxx', // Banner广告位ID，上线前替换
   },
 
   onLaunch() {

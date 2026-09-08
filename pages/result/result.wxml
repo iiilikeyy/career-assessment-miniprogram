@@ -68,15 +68,52 @@
       </view>
     </view>
 
-    <!-- 简要结果 -->
+    <!-- 结果解析 -->
     <view class="desc-card">
       <view class="card-title">结果解析</view>
       <view class="desc-text">{{result.shortDesc}}</view>
     </view>
 
+    <!-- 性格特点 -->
+    <view class="personality-card" wx:if="{{personalityTraits.length > 0}}">
+      <view class="card-title">
+        <text class="card-icon">💡</text>
+        性格特点
+      </view>
+      <view class="personality-list">
+        <view
+          class="personality-item"
+          wx:for="{{personalityTraits}}"
+          wx:key="index"
+        >
+          <text class="personality-text">{{item}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 适合的工作环境 -->
+    <view class="env-card" wx:if="{{workEnvironment.length > 0}}">
+      <view class="card-title">
+        <text class="card-icon">🏢</text>
+        适合的工作环境
+      </view>
+      <view class="env-tags">
+        <view
+          class="env-tag"
+          wx:for="{{workEnvironment}}"
+          wx:key="*this"
+        >
+          {{item}}
+        </view>
+      </view>
+    </view>
+
     <!-- 适合职业 -->
     <view class="careers-card">
-      <view class="card-title">适合的职业方向</view>
+      <view class="card-title">
+        <text class="card-icon">💼</text>
+        适合的职业方向
+      </view>
       <view class="career-tags">
         <view
           class="career-tag"
@@ -96,10 +133,10 @@
         分享给好友，即可免费查看完整分析
       </view>
       <view class="lock-benefits">
-        <view class="benefit-item">✓ 完整的性格深度分析</view>
-        <view class="benefit-item">✓ 具体的职业推荐列表</view>
-        <view class="benefit-item">✓ 个人发展建议</view>
-        <view class="benefit-item">✓ 适合的工作环境</view>
+        <view class="benefit-item">✓ 你的核心优势能力分析</view>
+        <view class="benefit-item">✓ 详细的职业方向推荐</view>
+        <view class="benefit-item">✓ 个人发展与成长建议</view>
+        <view class="benefit-item">✓ 更多深度内容</view>
       </view>
       <button
         class="btn-primary unlock-btn"
@@ -111,10 +148,52 @@
     </view>
 
     <!-- 详细报告（已解锁） -->
-    <view wx:if="{{showFullReport}}" class="full-report-card">
-      <view class="card-title">完整报告</view>
-      <view class="full-desc">{{result.fullDesc}}</view>
-    </view>
+    <block wx:if="{{showFullReport}}">
+      <!-- 优势能力 -->
+      <view class="strengths-card" wx:if="{{strengths.length > 0}}">
+        <view class="card-title">
+          <text class="card-icon">⭐</text>
+          你的核心优势
+        </view>
+        <view class="strengths-list">
+          <view
+            class="strength-item"
+            wx:for="{{strengths}}"
+            wx:key="index"
+          >
+            <view class="strength-bullet"></view>
+            <text class="strength-text">{{item}}</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 详细职业方向 -->
+      <view class="career-detail-card" wx:if="{{careerDirections.length > 0}}">
+        <view class="card-title">
+          <text class="card-icon">📋</text>
+          详细职业推荐
+        </view>
+        <view class="career-detail-list">
+          <view
+            class="career-detail-item"
+            wx:for="{{careerDirections}}"
+            wx:key="index"
+          >
+            <text class="career-dot">●</text>
+            <text class="career-detail-text">{{item}}</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 发展建议 -->
+      <view class="advice-card" wx:if="{{developmentAdvice}}">
+        <view class="card-title">
+          <text class="card-icon">🚀</text>
+          发展建议
+        </view>
+        <view class="advice-text">{{developmentAdvice}}</view>
+      </view>
+    </block>
 
     <!-- 操作按钮 -->
     <view class="action-buttons">

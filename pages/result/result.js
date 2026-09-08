@@ -1,7 +1,6 @@
 // pages/result/result.js
 const { get, post } = require('../../utils/request');
 const { isLoggedIn, ensureLogin } = require('../../utils/auth');
-const { showRewardedVideoAd } = require('../../utils/ad');
 
 Page({
   data: {
@@ -14,6 +13,13 @@ Page({
     radarData: [],
     dimensionNames: {},
     dimensionDetails: [],
+    // 结构化报告数据
+    intro: '',
+    personalityTraits: [],
+    workEnvironment: [],
+    strengths: [],
+    careerDirections: [],
+    developmentAdvice: '',
   },
 
   onLoad(options) {
@@ -83,6 +89,12 @@ Page({
       dimensionNames,
       dimensionDetails: result.dimensionDetails || [],
       showFullReport: result.isUnlocked || false,
+      intro: result.intro || '',
+      personalityTraits: result.personalityTraits || [],
+      workEnvironment: result.workEnvironment || [],
+      strengths: result.strengths || [],
+      careerDirections: result.careerDirections || [],
+      developmentAdvice: result.developmentAdvice || '',
     });
   },
 
@@ -108,7 +120,18 @@ Page({
       // 调用后端分享解锁接口
       if (this.data.recordId) {
         try {
-          await post(`/assessments/${this.data.recordId}/unlock`, { type: 'share' });
+          const unlockRes = await post(`/assessments/${this.data.recordId}/unlock`, { type: 'share' });
+          // 更新解锁后的结构化数据
+          if (unlockRes) {
+            this.setData({
+              strengths: unlockRes.strengths || [],
+              careerDirections: unlockRes.careerDirections || [],
+              developmentAdvice: unlockRes.developmentAdvice || '',
+              intro: unlockRes.intro || this.data.intro,
+              personalityTraits: unlockRes.personalityTraits || this.data.personalityTraits,
+              workEnvironment: unlockRes.workEnvironment || this.data.workEnvironment,
+            });
+          }
         } catch (err) {
           console.warn('解锁接口调用失败:', err);
         }

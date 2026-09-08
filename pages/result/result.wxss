@@ -36,9 +36,13 @@
 .radar-card,
 .dimension-card,
 .desc-card,
+.personality-card,
+.env-card,
 .careers-card,
 .lock-card,
-.full-report-card {
+.strengths-card,
+.career-detail-card,
+.advice-card {
   margin: -30rpx 30rpx 24rpx;
   background: #fff;
   border-radius: 16rpx;
@@ -49,9 +53,13 @@
 
 .dimension-card,
 .desc-card,
+.personality-card,
+.env-card,
 .careers-card,
 .lock-card,
-.full-report-card {
+.strengths-card,
+.career-detail-card,
+.advice-card {
   margin-top: 0;
 }
 
@@ -60,6 +68,13 @@
   font-weight: 600;
   color: #1a1a2e;
   margin-bottom: 20rpx;
+  display: flex;
+  align-items: center;
+}
+
+.card-icon {
+  font-size: 32rpx;
+  margin-right: 10rpx;
 }
 
 /* 雷达图 */
@@ -274,4 +289,121 @@
 /* 广告位 */
 .ad-banner {
   margin: 20rpx 30rpx;
+}
+
+/* 性格特点 */
+.personality-list {
+  padding: 6rpx 0;
+}
+
+.personality-item {
+  position: relative;
+  padding: 14rpx 0 14rpx 24rpx;
+  font-size: 28rpx;
+  color: #444;
+  line-height: 1.7;
+}
+
+.personality-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 26rpx;
+  width: 10rpx;
+  height: 10rpx;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+/* 适合的工作环境 */
+.env-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16rpx;
+}
+
+.env-tag {
+  padding: 12rpx 24rpx;
+  background: linear-gradient(135deg, #e0f7fa 0%, #e8f5e9 100%);
+  color: #00897b;
+  border-radius: 24rpx;
+  font-size: 24rpx;
+  font-weight: 500;
+}
+
+/* 核心优势 */
+.strengths-card {
+  background: linear-gradient(135deg, #fffbf0 0%, #fff9f5 100%);
+  border: 1rpx solid #ffe4b5;
+}
+
+.strengths-list {
+  padding: 6rpx 0;
+}
+
+.strength-item {
+  display: flex;
+  align-items: flex-start;
+  padding: 12rpx 0;
+}
+
+.strength-bullet {
+  width: 12rpx;
+  height: 12rpx;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ff9a56 0%, #ff6b6b 100%);
+  margin-top: 14rpx;
+  margin-right: 16rpx;
+  flex-shrink: 0;
+}
+
+.strength-text {
+  font-size: 28rpx;
+  color: #444;
+  line-height: 1.7;
+  flex: 1;
+}
+
+/* 详细职业推荐 */
+.career-detail-card {
+  background: #f8faff;
+  border: 1rpx solid #e0e7ff;
+}
+
+.career-detail-list {
+  padding: 6rpx 0;
+}
+
+.career-detail-item {
+  display: flex;
+  align-items: flex-start;
+  padding: 10rpx 0;
+}
+
+.career-dot {
+  color: #667eea;
+  font-size: 16rpx;
+  margin-right: 14rpx;
+  margin-top: 10rpx;
+  flex-shrink: 0;
+}
+
+.career-detail-text {
+  font-size: 27rpx;
+  color: #444;
+  line-height: 1.7;
+  flex: 1;
+}
+
+/* 发展建议 */
+.advice-card {
+  background: linear-gradient(135deg, #f0f9ff 0%, #f0fdfa 100%);
+  border: 1rpx solid #bae6fd;
+}
+
+.advice-text {
+  font-size: 28rpx;
+  color: #444;
+  line-height: 1.9;
+  padding: 6rpx 0;
 }
