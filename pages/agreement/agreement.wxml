@@ -1,0 +1,48 @@
+<!-- pages/agreement/agreement.wxml -->
+<view class="doc-page">
+  <view class="doc-update">更新日期：2026-09-03</view>
+
+  <view class="doc-section">
+    <view class="doc-h2">一、服务说明</view>
+    <view class="doc-p">职业兴趣测评助手（以下简称"本小程序"）是一款基于霍兰德职业兴趣理论的轻量级测评工具。本小程序提供的测评结果仅供个人参考，不构成任何职业规划、求职就业或教育培训方面的专业建议。</view>
+  </view>
+
+  <view class="doc-section">
+    <view class="doc-h2">二、使用规则</view>
+    <view class="doc-p">1. 用户应合法合规使用本小程序，不得利用本小程序从事任何违法违规活动。</view>
+    <view class="doc-p">2. 用户应如实作答，测评结果的真实性取决于用户的答题态度。</view>
+    <view class="doc-p">3. 用户不得以任何方式干扰本小程序的正常运行，包括但不限于恶意攻击、反向工程等。</view>
+  </view>
+
+  <view class="doc-section">
+    <view class="doc-h2">三、知识产权</view>
+    <view class="doc-p">1. 本小程序的测评题目、计分逻辑、结果解读等内容版权归开发者所有。</view>
+    <view class="doc-p">2. 霍兰德职业兴趣理论属于公共领域知识，本小程序仅基于该理论进行题目设计。</view>
+    <view class="doc-p">3. 用户不得复制、传播本小程序的测评内容用于商业用途。</view>
+  </view>
+
+  <view class="doc-section">
+    <view class="doc-h2">四、免责声明</view>
+    <view class="doc-p">1. 测评结果仅供参考，不构成职业建议。用户应根据自身实际情况做出职业决策。</view>
+    <view class="doc-p">2. 本小程序不对测评结果的准确性做任何保证，不对用户基于测评结果做出的决定承担责任。</view>
+    <view class="doc-p">3. 因网络故障、服务器维护等原因导致的服务中断，本小程序不承担责任。</view>
+  </view>
+
+  <view class="doc-section">
+    <view class="doc-h2">五、广告说明</view>
+    <view class="doc-p">1. 本小程序包含 Banner 广告和激励视频广告，用户可选择观看激励视频解锁详细报告。</view>
+    <view class="doc-p">2. 本小程序不会强制要求用户观看广告，广告为可选项。</view>
+  </view>
+
+  <view class="doc-section">
+    <view class="doc-h2">六、协议变更</view>
+    <view class="doc-p">本协议可能根据业务发展和法律法规变化进行更新。更新后的协议将在小程序内公示，继续使用即视为同意变更后的协议。</view>
+  </view>
+
+  <view class="doc-section">
+    <view class="doc-h2">七、争议解决</view>
+    <view class="doc-p">如因本协议或使用本小程序产生争议，双方应友好协商解决。协商不成的，可向开发者所在地有管辖权的人民法院提起诉讼。</view>
+  </view>
+
+  <view class="doc-footer">本用户协议最终解释权归本小程序开发者所有。</view>
+</view>

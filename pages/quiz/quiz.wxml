@@ -1,0 +1,73 @@
+<!-- pages/quiz/quiz.wxml -->
+<view class="quiz-page">
+  <!-- 自定义导航栏 -->
+  <view class="custom-nav">
+    <view class="nav-back" bindtap="onBackPress">
+      <text class="back-icon">‹</text>
+    </view>
+    <view class="nav-title">答题中</view>
+    <view class="nav-placeholder"></view>
+  </view>
+  <view class="nav-safe-area"></view>
+
+  <!-- 加载中 -->
+  <view wx:if="{{loading}}" class="loading-wrap">
+    <view class="text-muted">加载中...</view>
+  </view>
+
+  <!-- 答题内容 -->
+  <block wx:else>
+    <!-- 进度条 -->
+    <view class="progress-bar">
+      <view class="progress-fill" style="width: {{progressPercent}}%"></view>
+    </view>
+    <view class="progress-text">
+      第 {{currentIndex + 1}} 题 / 共 {{questions.length}} 题
+    </view>
+
+    <!-- 题目 -->
+    <view class="question-card">
+      <view class="question-text">{{questions[currentIndex].text}}</view>
+    </view>
+
+    <!-- 选项 -->
+    <view class="options-wrap">
+      <view
+        class="option-item {{answers[questions[currentIndex].id] === index ? 'selected' : ''}}"
+        wx:for="{{questions[currentIndex].options}}"
+        wx:for-item="option"
+        wx:for-index="index"
+        wx:key="label"
+        bindtap="selectOption"
+        data-index="{{index}}"
+      >
+        <view class="option-radio">
+          <view wx:if="{{answers[questions[currentIndex].id] === index}}" class="radio-dot"></view>
+        </view>
+        <view class="option-label">{{option.label}}</view>
+      </view>
+    </view>
+
+    <!-- 底部操作 -->
+    <view class="bottom-actions">
+      <button
+        wx:if="{{currentIndex > 0}}"
+        class="btn-secondary prev-btn"
+        bindtap="prevQuestion"
+      >
+        上一题
+      </button>
+      <button
+        wx:if="{{currentIndex === questions.length - 1}}"
+        class="btn-primary submit-btn"
+        bindtap="submitAssessment"
+        loading="{{submitting}}"
+      >
+        提交测评
+      </button>
+      <view wx:else class="next-hint">
+        <text class="text-muted">选择答案后自动进入下一题 →</text>
+      </view>
+    </view>
+  </block>
+</view>

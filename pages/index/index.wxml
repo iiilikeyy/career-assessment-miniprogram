@@ -1,0 +1,146 @@
+<!-- pages/index/index.wxml -->
+<view class="page">
+  <!-- 顶部banner -->
+  <view class="banner">
+    <view class="banner-brand">
+      <image
+        class="brand-logo"
+        src="/images/logo-simple.png"
+        mode="aspectFit"
+      ></image>
+      <view class="brand-name">鱼鱼测</view>
+    </view>
+    <view class="banner-title">发现你的职业兴趣</view>
+    <view class="banner-subtitle">5分钟，了解你最适合的职业方向</view>
+    <view class="banner-mascot">
+      <image
+        src="/images/logo-simple.png"
+        mode="aspectFit"
+        class="mascot-img"
+      ></image>
+    </view>
+  </view>
+
+  <!-- 测评列表 -->
+  <view class="container">
+    <view wx:if="{{loading}}" class="loading">
+      <view class="text-muted">加载中...</view>
+    </view>
+
+    <block wx:else>
+      <view
+        class="assessment-card"
+        wx:for="{{assessments}}"
+        wx:key="id"
+        bindtap="startAssessment"
+        data-id="{{item.id}}"
+      >
+        <view class="card-left">
+          <view class="card-icon">🎯</view>
+        </view>
+        <view class="card-content">
+          <view class="card-title">{{item.title}}</view>
+          <view class="card-desc">{{item.description}}</view>
+          <view class="card-meta">
+            <text class="meta-item">📝 {{item.questionCount}}题</text>
+            <text class="meta-item">⏱ 约{{item.duration}}分钟</text>
+          </view>
+        </view>
+        <view class="card-arrow">›</view>
+      </view>
+
+      <view wx:if="{{assessments.length === 0}}" class="empty">
+        <view class="text-muted">暂无测评</view>
+      </view>
+    </block>
+
+    <!-- 测评特点 -->
+    <view class="feature-section">
+      <view class="section-title">为什么选择霍兰德测试</view>
+      <view class="feature-grid">
+        <view class="feature-item">
+          <view class="feature-icon">📊</view>
+          <view class="feature-name">科学权威</view>
+          <view class="feature-desc">基于霍兰德职业兴趣理论，经过数十年验证</view>
+        </view>
+        <view class="feature-item">
+          <view class="feature-icon">⚡</view>
+          <view class="feature-name">快速高效</view>
+          <view class="feature-desc">仅需60题，5分钟完成，精准定位兴趣方向</view>
+        </view>
+        <view class="feature-item">
+          <view class="feature-icon">🎯</view>
+          <view class="feature-name">六维分析</view>
+          <view class="feature-desc">从六个维度全面解析你的职业兴趣特征</view>
+        </view>
+        <view class="feature-item">
+          <view class="feature-icon">📤</view>
+          <view class="feature-name">免费解锁</view>
+          <view class="feature-desc">分享给好友即可查看完整职业分析报告</view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 适合人群 -->
+    <view class="suitable-section">
+      <view class="section-title">适合谁测</view>
+      <view class="suitable-list">
+        <view class="suitable-item">
+          <view class="suitable-num">01</view>
+          <view class="suitable-content">
+            <view class="suitable-title">大学生</view>
+            <view class="suitable-desc">迷茫不知道选什么专业或就业方向</view>
+          </view>
+        </view>
+        <view class="suitable-item">
+          <view class="suitable-num">02</view>
+          <view class="suitable-content">
+            <view class="suitable-title">职场新人</view>
+            <view class="suitable-desc">工作1-3年，不确定是否适合当前岗位</view>
+          </view>
+        </view>
+        <view class="suitable-item">
+          <view class="suitable-num">03</view>
+          <view class="suitable-content">
+            <view class="suitable-title">转行人群</view>
+            <view class="suitable-desc">想转行但不知道自己适合什么方向</view>
+          </view>
+        </view>
+        <view class="suitable-item">
+          <view class="suitable-num">04</view>
+          <view class="suitable-content">
+            <view class="suitable-title">好奇宝宝</view>
+            <view class="suitable-desc">对自己好奇，想更了解自己的兴趣特点</view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 常见问题 -->
+    <view class="faq-section">
+      <view class="section-title">常见问题</view>
+      <view class="faq-list">
+        <view
+          class="faq-item"
+          wx:for="{{faqList}}"
+          wx:key="id"
+          bindtap="toggleFaq"
+          data-id="{{item.id}}"
+        >
+          <view class="faq-question">
+            <text>{{item.question}}</text>
+            <text class="faq-arrow {{item.open ? 'open' : ''}}">›</text>
+          </view>
+          <view wx:if="{{item.open}}" class="faq-answer">
+            {{item.answer}}
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 免责声明 -->
+    <view class="disclaimer">
+      本测评仅供参考，不构成职业建议
+    </view>
+  </view>
+</view>

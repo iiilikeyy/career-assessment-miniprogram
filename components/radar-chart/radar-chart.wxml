@@ -1,0 +1,9 @@
+<!-- components/radar-chart/radar-chart.wxml -->
+<view class="radar-chart-wrap" style="width: {{size}}rpx; height: {{size}}rpx;">
+  <canvas
+    type="2d"
+    id="radarCanvas"
+    class="radar-canvas"
+    style="width: {{size}}rpx; height: {{size}}rpx;"
+  ></canvas>
+</view>

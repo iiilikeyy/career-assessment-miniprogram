@@ -1,0 +1,88 @@
+<!-- pages/mine/mine.wxml -->
+<view class="mine-page">
+  <!-- 用户信息卡片 -->
+  <view class="user-card" bindtap="onUserTap">
+    <block wx:if="{{userInfo}}">
+      <!-- 头像（微信头像选择器） -->
+      <button class="avatar-btn" open-type="chooseAvatar" bindchooseavatar="onChooseAvatar">
+        <image wx:if="{{userInfo.avatarUrl}}" class="avatar" src="{{userInfo.avatarUrl}}" mode="aspectFill"></image>
+        <view wx:else class="avatar-placeholder">👤</view>
+      </button>
+      <view class="user-info">
+        <!-- 昵称（微信昵称输入框） -->
+        <input
+          class="nickname-input"
+          type="nickname"
+          placeholder="点击设置昵称"
+          value="{{userInfo.nickname}}"
+          bindinput="onNicknameInput"
+          placeholder-class="nickname-placeholder"
+        />
+        <view class="user-id">ID: {{userInfo.id}}</view>
+      </view>
+    </block>
+    <block wx:else>
+      <view class="avatar-placeholder">👤</view>
+      <view class="user-info">
+        <view class="nickname">点击登录</view>
+        <view class="user-desc">登录后可保存测评记录</view>
+      </view>
+      <view class="arrow">›</view>
+    </block>
+  </view>
+
+  <!-- 我的测评记录 -->
+  <view class="section-card">
+    <view class="section-title">
+      <text>我的测评记录</text>
+      <text wx:if="{{!userInfo}}" class="section-hint">登录后查看</text>
+    </view>
+
+    <view wx:if="{{userInfo && records.length > 0}}" class="record-list">
+      <view
+        class="record-item"
+        wx:for="{{records}}"
+        wx:key="id"
+        bindtap="viewRecord"
+        data-id="{{item.id}}"
+        data-assessment-id="{{item.assessmentId}}"
+      >
+        <view class="record-info">
+          <view class="record-title">{{item.resultTitle}}</view>
+          <view class="record-time">{{item.createdAt}}</view>
+        </view>
+        <view class="record-status">
+          <text wx:if="{{item.isUnlocked}}" class="status-unlocked">已解锁</text>
+          <text wx:else class="status-locked">未解锁</text>
+        </view>
+        <view class="arrow">›</view>
+      </view>
+    </view>
+
+    <view wx:elif="{{userInfo && records.length === 0}}" class="empty-record">
+      <view class="text-muted">还没有测评记录</view>
+      <button class="btn-secondary mt-20" bindtap="goAssessment">去测评</button>
+    </view>
+
+    <view wx:else class="empty-record">
+      <view class="text-muted">登录后可查看历史测评记录</view>
+    </view>
+  </view>
+
+  <!-- 设置列表 -->
+  <view class="section-card">
+    <view class="setting-item" bindtap="showPrivacy">
+      <text>隐私政策</text>
+      <text class="arrow">›</text>
+    </view>
+    <view class="setting-item" bindtap="showAgreement">
+      <text>用户协议</text>
+      <text class="arrow">›</text>
+    </view>
+  </view>
+
+  <!-- 底部说明 -->
+  <view class="footer-note">
+    <text class="text-muted">职业兴趣测评 v1.0</text>
+  </view>
+</view>

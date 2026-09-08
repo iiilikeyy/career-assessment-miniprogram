@@ -1,0 +1,31 @@
+# Dependencies
+node_modules/
+miniprogram_npm/
+
+# Build
+dist/
+build/
+
+# Private config
+project.private.config.json
+project.config.json.bak
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temp
+tmp/
+temp/

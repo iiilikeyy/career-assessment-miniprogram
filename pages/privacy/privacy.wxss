@@ -1,0 +1,41 @@
+/* pages/privacy/privacy.wxss */
+.doc-page {
+  min-height: 100vh;
+  background: #fff;
+  padding: 30rpx;
+}
+
+.doc-update {
+  font-size: 24rpx;
+  color: #999;
+  margin-bottom: 30rpx;
+}
+
+.doc-section {
+  margin-bottom: 40rpx;
+}
+
+.doc-h2 {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #1a1a2e;
+  margin-bottom: 16rpx;
+  padding-left: 16rpx;
+  border-left: 6rpx solid #667eea;
+}
+
+.doc-p {
+  font-size: 28rpx;
+  color: #555;
+  line-height: 1.8;
+  margin-bottom: 10rpx;
+}
+
+.doc-footer {
+  margin-top: 60rpx;
+  padding-top: 30rpx;
+  border-top: 1rpx solid #eee;
+  font-size: 24rpx;
+  color: #aaa;
+  text-align: center;
+}

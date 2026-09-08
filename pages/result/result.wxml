@@ -1,0 +1,139 @@
+<!-- pages/result/result.wxml -->
+<view class="result-page">
+  <!-- 加载中 -->
+  <view wx:if="{{loading}}" class="loading-wrap">
+    <view class="text-muted">加载中...</view>
+  </view>
+
+  <block wx:else>
+    <!-- 结果头部 -->
+    <view class="result-header">
+      <view class="result-label">你的职业兴趣类型是</view>
+      <view class="result-title">{{result.resultTitle}}</view>
+      <view class="result-code">{{result.resultCode}}</view>
+    </view>
+
+    <!-- 雷达图 -->
+    <view class="radar-card">
+      <view class="card-title">六维度得分</view>
+      <view class="radar-chart">
+        <radar-chart
+          data="{{radarData}}"
+          max="{{50}}"
+          size="560"
+          fill-color="rgba(102, 126, 234, 0.25)"
+          stroke-color="#667eea"
+          text-color="#666"
+        ></radar-chart>
+      </view>
+    </view>
+
+    <!-- 维度解析 -->
+    <view class="dimension-card">
+      <view class="card-title">维度解析</view>
+      <view class="dimension-list">
+        <view
+          class="dimension-item"
+          wx:for="{{dimensionDetails}}"
+          wx:key="code"
+        >
+          <view class="dimension-header">
+            <view class="dimension-name">
+              <text class="dimension-rank">{{index + 1}}</text>
+              {{item.name}}
+            </view>
+            <view class="dimension-score">
+              <text class="score-num">{{item.score}}</text>
+              <text class="score-max">/{{item.maxScore}}</text>
+            </view>
+          </view>
+          <view class="dimension-bar">
+            <view
+              class="dimension-bar-fill {{item.isHigh ? 'high' : 'low'}}"
+              style="width: {{item.score / item.maxScore * 100}}%"
+            ></view>
+          </view>
+          <view class="dimension-desc">{{item.desc}}</view>
+          <view class="dimension-tags" wx:if="{{item.traits.length > 0}}">
+            <view
+              class="dim-tag"
+              wx:for="{{item.traits}}"
+              wx:for-item="trait"
+              wx:key="*this"
+            >
+              {{trait}}
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 简要结果 -->
+    <view class="desc-card">
+      <view class="card-title">结果解析</view>
+      <view class="desc-text">{{result.shortDesc}}</view>
+    </view>
+
+    <!-- 适合职业 -->
+    <view class="careers-card">
+      <view class="card-title">适合的职业方向</view>
+      <view class="career-tags">
+        <view
+          class="career-tag"
+          wx:for="{{result.careers}}"
+          wx:key="*this"
+        >
+          {{item}}
+        </view>
+      </view>
+    </view>
+
+    <!-- 详细报告（锁定状态） -->
+    <view wx:if="{{!showFullReport}}" class="lock-card">
+      <view class="lock-icon">📤</view>
+      <view class="lock-title">分享解锁完整报告</view>
+      <view class="lock-desc">
+        分享给好友，即可免费查看完整分析
+      </view>
+      <view class="lock-benefits">
+        <view class="benefit-item">✓ 完整的性格深度分析</view>
+        <view class="benefit-item">✓ 具体的职业推荐列表</view>
+        <view class="benefit-item">✓ 个人发展建议</view>
+        <view class="benefit-item">✓ 适合的工作环境</view>
+      </view>
+      <button
+        class="btn-primary unlock-btn"
+        open-type="share"
+        bindtap="onShareUnlock"
+      >
+        📤 分享给好友解锁
+      </button>
+    </view>
+
+    <!-- 详细报告（已解锁） -->
+    <view wx:if="{{showFullReport}}" class="full-report-card">
+      <view class="card-title">完整报告</view>
+      <view class="full-desc">{{result.fullDesc}}</view>
+    </view>
+
+    <!-- 操作按钮 -->
+    <view class="action-buttons">
+      <button class="btn-secondary" bindtap="retake">再测一次</button>
+      <button class="btn-secondary" bindtap="saveShareImage">保存卡片</button>
+      <button class="btn-primary" open-type="share">分享给好友</button>
+    </view>
+
+    <!-- 免责声明 -->
+    <view class="disclaimer">
+      本测评仅供参考，不构成职业建议
+    </view>
+  </block>
+
+  <!-- 分享卡片弹窗 -->
+  <share-card
+    visible="{{showShareCard}}"
+    result="{{result}}"
+    radar-data="{{radarData}}"
+    bind:close="onShareCardClose"
+  ></share-card>
+</view>

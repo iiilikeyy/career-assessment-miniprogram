@@ -1,0 +1,19 @@
+<!-- components/share-card/share-card.wxml -->
+<view class="share-card-wrapper" wx:if="{{visible}}">
+  <view class="share-mask" bindtap="close"></view>
+  <view class="share-modal">
+    <view class="share-title">保存分享卡片</view>
+    <view class="share-canvas-wrap">
+      <canvas
+        type="2d"
+        id="shareCanvas"
+        class="share-canvas"
+        style="width:{{canvasWidth}}px;height:{{canvasHeight}}px;"
+      ></canvas>
+    </view>
+    <view class="share-actions">
+      <button class="btn-secondary" bindtap="close">取消</button>
+      <button class="btn-primary" bindtap="saveImage" loading="{{saving}}">保存到相册</button>
+    </view>
+  </view>
+</view>
