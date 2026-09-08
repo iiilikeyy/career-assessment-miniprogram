@@ -2,7 +2,10 @@
 <view class="share-card-wrapper" wx:if="{{visible}}">
   <view class="share-mask" bindtap="close"></view>
   <view class="share-modal">
-    <view class="share-title">保存分享卡片</view>
+    <view class="share-header">
+      <view class="share-title">分享你的测评结果</view>
+      <view class="share-subtitle">保存图片分享给好友，一起测测吧</view>
+    </view>
     <view class="share-canvas-wrap">
       <canvas
         type="2d"
@@ -11,9 +14,14 @@
         style="width:{{canvasWidth}}px;height:{{canvasHeight}}px;"
       ></canvas>
     </view>
+    <view class="share-tip">
+      <text>💡 长按图片可直接分享给好友</text>
+    </view>
     <view class="share-actions">
-      <button class="btn-secondary" bindtap="close">取消</button>
-      <button class="btn-primary" bindtap="saveImage" loading="{{saving}}">保存到相册</button>
+      <button class="btn-secondary" bindtap="close">关闭</button>
+      <button class="btn-primary" bindtap="saveImage" loading="{{saving}}">
+        {{saving ? '生成中...' : '保存到相册'}}
+      </button>
     </view>
   </view>
 </view>

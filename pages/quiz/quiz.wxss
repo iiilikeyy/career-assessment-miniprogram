@@ -70,32 +70,66 @@
   transition: width 0.3s ease;
 }
 
-.progress-text {
-  text-align: center;
+.progress-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20rpx 30rpx;
+}
+
+.progress-badge {
+  display: flex;
+  align-items: baseline;
+}
+
+.badge-num {
+  font-size: 36rpx;
+  font-weight: 700;
+  color: #667eea;
+  line-height: 1;
+}
+
+.badge-total {
   font-size: 24rpx;
   color: #999;
-  padding: 20rpx 0;
+  margin-left: 4rpx;
+}
+
+.progress-label {
+  font-size: 24rpx;
+  color: #999;
 }
 
 /* 题目卡片 */
 .question-card {
-  margin: 20rpx 30rpx;
+  margin: 10rpx 30rpx 20rpx;
   background: #fff;
   border-radius: 16rpx;
-  padding: 40rpx 30rpx;
+  padding: 36rpx 30rpx;
   box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.06);
+}
+
+.question-tag {
+  display: inline-block;
+  padding: 6rpx 16rpx;
+  background: linear-gradient(135deg, #f5f7ff 0%, #fff0f6 100%);
+  color: #667eea;
+  font-size: 22rpx;
+  font-weight: 500;
+  border-radius: 20rpx;
+  margin-bottom: 20rpx;
 }
 
 .question-text {
   font-size: 34rpx;
-  font-weight: 500;
+  font-weight: 600;
   color: #1a1a2e;
   line-height: 1.6;
 }
 
 /* 选项 */
 .options-wrap {
-  padding: 20rpx 30rpx;
+  padding: 10rpx 30rpx;
 }
 
 .option-item {
@@ -103,54 +137,98 @@
   align-items: center;
   background: #fff;
   border-radius: 12rpx;
-  padding: 30rpx;
-  margin-bottom: 20rpx;
+  padding: 28rpx 24rpx;
+  margin-bottom: 18rpx;
   border: 2rpx solid transparent;
-  transition: all 0.2s;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.04);
+  animation: optionFadeIn 0.3s ease-out both;
+}
+
+@keyframes optionFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(16rpx);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .option-item:active {
   transform: scale(0.98);
+  background: #f8f9ff;
 }
 
 .option-item.selected {
   border-color: #667eea;
-  background: #f5f7ff;
+  background: linear-gradient(135deg, #f5f7ff 0%, #f0f4ff 100%);
+  box-shadow: 0 4rpx 16rpx rgba(102, 126, 234, 0.2);
 }
 
 .option-radio {
   width: 36rpx;
   height: 36rpx;
   border-radius: 50%;
-  border: 2rpx solid #ccc;
+  border: 2rpx solid #ddd;
   margin-right: 20rpx;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  transition: all 0.2s ease;
 }
 
 .option-item.selected .option-radio {
   border-color: #667eea;
-}
-
-.radio-dot {
-  width: 20rpx;
-  height: 20rpx;
-  border-radius: 50%;
   background: #667eea;
 }
 
+.radio-dot {
+  width: 18rpx;
+  height: 18rpx;
+  border-radius: 50%;
+  background: #ffffff;
+}
+
 .option-label {
-  font-size: 30rpx;
+  font-size: 29rpx;
   color: #333;
   flex: 1;
+  line-height: 1.5;
+  transition: all 0.2s ease;
 }
 
 .option-item.selected .option-label {
-  color: #667eea;
-  font-weight: 500;
+  color: #4c51bf;
+  font-weight: 600;
+}
+
+.option-check {
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  font-size: 22rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 12rpx;
+  flex-shrink: 0;
+  animation: checkPop 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+@keyframes checkPop {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 /* 底部操作 */

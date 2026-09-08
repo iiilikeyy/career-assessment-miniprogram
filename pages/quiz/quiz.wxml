@@ -21,12 +21,17 @@
     <view class="progress-bar">
       <view class="progress-fill" style="width: {{progressPercent}}%"></view>
     </view>
-    <view class="progress-text">
-      第 {{currentIndex + 1}} 题 / 共 {{questions.length}} 题
+    <view class="progress-info">
+      <view class="progress-badge">
+        <text class="badge-num">{{currentIndex + 1}}</text>
+        <text class="badge-total">/{{questions.length}}</text>
+      </view>
+      <view class="progress-label">答题进度 {{progressPercent}}%</view>
     </view>
 
-    <!-- 题目 -->
-    <view class="question-card">
+    <!-- 题目卡片 -->
+    <view class="question-card question-enter">
+      <view class="question-tag">第 {{currentIndex + 1}} 题</view>
       <view class="question-text">{{questions[currentIndex].text}}</view>
     </view>
 
@@ -40,11 +45,13 @@
         wx:key="label"
         bindtap="selectOption"
         data-index="{{index}}"
+        style="animation-delay: {{index * 0.08}}s"
       >
         <view class="option-radio">
           <view wx:if="{{answers[questions[currentIndex].id] === index}}" class="radio-dot"></view>
         </view>
         <view class="option-label">{{option.label}}</view>
+        <view class="option-check" wx:if="{{answers[questions[currentIndex].id] === index}}">✓</view>
       </view>
     </view>
 
