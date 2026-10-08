@@ -1,0 +1,60 @@
+<!-- pages/coach/coach.wxml -->
+<view class="coach-page">
+  <!-- 聊天区 -->
+  <scroll-view
+    class="chat-scroll"
+    scroll-y
+    scroll-into-view="{{scrollIntoView}}"
+    scroll-with-animation
+  >
+    <view class="msg-list">
+      <view
+        class="msg-row {{item.role}}"
+        wx:for="{{messages}}"
+        wx:key="index"
+        id="msg-{{index}}"
+      >
+        <view class="avatar {{item.role}}">{{item.role === 'assistant' ? '鱼' : '我'}}</view>
+        <view class="bubble {{item.role}}">
+          <text wx:if="{{item.content}}">{{item.content}}</text>
+          <text wx:elif="{{loading}}" class="typing">思考中…</text>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- 免费额度提示 -->
+  <view wx:if="{{needUnlock}}" class="unlock-banner">
+    <view class="unlock-text">免费咨询次数已用完</view>
+    <button class="unlock-btn" bindtap="onUnlock">分享解锁继续聊</button>
+  </view>
+
+  <!-- 快捷提问 -->
+  <view class="quick-wrap" wx:if="{{!loading && messages.length <= 2}}">
+    <view
+      class="quick-chip"
+      wx:for="{{quickQuestions}}"
+      wx:key="*this"
+      data-q="{{item}}"
+      bindtap="onQuickTap"
+    >{{item}}</view>
+  </view>
+
+  <!-- 输入栏 -->
+  <view class="input-bar">
+    <input
+      class="input"
+      value="{{inputValue}}"
+      placeholder="问问你的生涯困惑…"
+      placeholder-class="input-placeholder"
+      bindinput="onInput"
+      confirm-type="send"
+      bindconfirm="sendMessage"
+    />
+    <button
+      class="send-btn"
+      bindtap="sendMessage"
+      disabled="{{loading || !inputValue}}"
+    >发送</button>
+  </view>
+</view>

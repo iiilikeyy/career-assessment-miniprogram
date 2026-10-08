@@ -125,6 +125,15 @@
       </view>
     </view>
 
+    <!-- AI 生涯教练入口 -->
+    <view class="coach-entry-card" bindtap="goCoach">
+      <view class="coach-entry-left">
+        <view class="coach-entry-title">🤖 和 AI 生涯教练聊聊</view>
+        <view class="coach-entry-desc">针对你的报告，一对一解答职业困惑</view>
+      </view>
+      <view class="coach-entry-arrow">›</view>
+    </view>
+
     <!-- 详细报告（锁定状态） -->
     <view wx:if="{{!showFullReport}}" class="lock-card">
       <view class="lock-icon">📤</view>

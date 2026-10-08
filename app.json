@@ -3,6 +3,7 @@
     "pages/index/index",
     "pages/quiz/quiz",
     "pages/result/result",
+    "pages/coach/coach",
     "pages/mine/mine",
     "pages/privacy/privacy",
     "pages/agreement/agreement"

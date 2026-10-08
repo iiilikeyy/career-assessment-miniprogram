@@ -213,6 +213,40 @@
   font-size: 26rpx;
 }
 
+/* AI 生涯教练入口 */
+.coach-entry-card {
+  margin: 24rpx 30rpx;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 16rpx;
+  padding: 30rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 6rpx 20rpx rgba(102, 126, 234, 0.35);
+}
+
+.coach-entry-left {
+  flex: 1;
+}
+
+.coach-entry-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 8rpx;
+}
+
+.coach-entry-desc {
+  font-size: 24rpx;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.coach-entry-arrow {
+  font-size: 48rpx;
+  color: rgba(255, 255, 255, 0.9);
+  margin-left: 16rpx;
+}
+
 /* 锁定卡片 */
 .lock-card {
   text-align: center;

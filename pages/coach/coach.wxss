@@ -1,0 +1,167 @@
+/* pages/coach/coach.wxss */
+
+.coach-page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: #f5f7fa;
+}
+
+/* 聊天区 */
+.chat-scroll {
+  flex: 1;
+  overflow: hidden;
+}
+
+.msg-list {
+  padding: 24rpx 24rpx 32rpx;
+}
+
+.msg-row {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 28rpx;
+}
+
+.msg-row.user {
+  flex-direction: row-reverse;
+}
+
+.avatar {
+  width: 64rpx;
+  height: 64rpx;
+  border-radius: 50%;
+  font-size: 26rpx;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin: 0 16rpx;
+}
+
+.avatar.assistant {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.avatar.user {
+  background: #b7c4d6;
+}
+
+.bubble {
+  max-width: 480rpx;
+  padding: 20rpx 26rpx;
+  border-radius: 18rpx;
+  font-size: 28rpx;
+  line-height: 1.7;
+  color: #333;
+  word-break: break-all;
+}
+
+.bubble.assistant {
+  background: #fff;
+  border-top-left-radius: 4rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.04);
+}
+
+.bubble.user {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  border-top-right-radius: 4rpx;
+}
+
+.bubble.typing,
+.typing {
+  color: #aaa;
+}
+
+/* 免费额度提示 */
+.unlock-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16rpx 24rpx;
+  background: #fff8e1;
+  border-top: 1rpx solid #ffe082;
+}
+
+.unlock-text {
+  font-size: 26rpx;
+  color: #b8860b;
+}
+
+.unlock-btn {
+  margin: 0;
+  padding: 0 28rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 26rpx;
+  color: #fff;
+  background: linear-gradient(135deg, #ff9a56 0%, #ff6b6b 100%);
+  border-radius: 30rpx;
+}
+
+.unlock-btn::after {
+  border: none;
+}
+
+/* 快捷提问 */
+.quick-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16rpx;
+  padding: 0 24rpx 16rpx;
+}
+
+.quick-chip {
+  padding: 12rpx 26rpx;
+  background: #fff;
+  border: 1rpx solid #e0e7ff;
+  color: #667eea;
+  border-radius: 30rpx;
+  font-size: 26rpx;
+}
+
+/* 输入栏 */
+.input-bar {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+  padding: 16rpx 24rpx;
+  padding-bottom: calc(16rpx + env(safe-area-inset-bottom));
+  background: #fff;
+  border-top: 1rpx solid #f0f2f5;
+}
+
+.input {
+  flex: 1;
+  height: 72rpx;
+  padding: 0 28rpx;
+  background: #f5f7fa;
+  border-radius: 36rpx;
+  font-size: 28rpx;
+}
+
+.input-placeholder {
+  color: #b0b6c4;
+}
+
+.send-btn {
+  margin: 0;
+  padding: 0 32rpx;
+  height: 72rpx;
+  line-height: 72rpx;
+  font-size: 28rpx;
+  color: #fff;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 36rpx;
+}
+
+.send-btn[disabled] {
+  background: #cfd3dc;
+  color: #fff;
+}
+
+.send-btn::after {
+  border: none;
+}

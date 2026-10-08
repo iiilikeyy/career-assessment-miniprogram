@@ -166,6 +166,31 @@ Page({
   },
 
   /**
+   * 进入 AI 生涯教练
+   */
+  goCoach() {
+    if (!this.data.recordId) {
+      wx.showModal({
+        title: '提示',
+        content: 'AI 教练需要登录后使用，登录后请重新测评生成报告',
+        confirmText: '去登录',
+        success: async (res) => {
+          if (res.confirm) {
+            try {
+              await ensureLogin();
+            } catch (e) { /* 忽略 */ }
+            wx.showToast({ title: '登录成功，请重新测评', icon: 'none' });
+          }
+        },
+      });
+      return;
+    }
+    wx.navigateTo({
+      url: `/pages/coach/coach?recordId=${this.data.recordId}`,
+    });
+  },
+
+  /**
    * 生成分享卡片（保存图片）
    */
   saveShareImage() {
